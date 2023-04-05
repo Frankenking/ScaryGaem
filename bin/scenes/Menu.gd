@@ -12,4 +12,4 @@ func _on_play_pressed():
 
 
 func _on_options_pressed():
-	get_tree().change_scene_to_file("res://bin/scenes/main.tscn")
+	get_tree().change_scene_to_file("res://bin/scenes/options.tscn")
