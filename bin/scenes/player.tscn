@@ -1,24 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjhp1rajuqdjp"]
+[gd_scene load_steps=5 format=3 uid="uid://bjhp1rajuqdjp"]
 
-[ext_resource type="Script" path="res://bin/scripts/Player.gd" id="1_fxej7"]
+[ext_resource type="Script" path="res://bin/scenes/player.gd" id="1_jyv45"]
+[ext_resource type="PackedScene" uid="uid://dh1m1y5t8lssm" path="res://bin/assets/3dassets/models/Flashlight.glb" id="2_x6f1w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_im0sb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7vcmt"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_jyv45")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_fxej7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_im0sb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_7vcmt")
 
-[node name="pivot" type="Node3D" parent="CharacterBody3D/CollisionShape3D/MeshInstance3D"]
+[node name="pivot" type="Node3D" parent="CollisionShape3D/MeshInstance3D"]
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CollisionShape3D/MeshInstance3D/pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727813, 0)
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D/MeshInstance3D/pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975068, 0)
+
+[node name="Items" type="Node3D" parent="CollisionShape3D/MeshInstance3D/pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.975068, 0)
+
+[node name="Flashlight" parent="CollisionShape3D/MeshInstance3D/pivot/Camera3D/Items" instance=ExtResource("2_x6f1w")]
+transform = Transform3D(0.00235805, -0.00211992, 0.0498994, 0.033428, 0.0371829, 0, -0.0371081, 0.0333607, 0.00317088, 0.493361, 0.457475, -0.89446)
+visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="CollisionShape3D/MeshInstance3D/pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.761873, -0.404471)
+target_position = Vector3(0, 0, -2.5)
+collide_with_areas = true

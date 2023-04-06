@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cchyl5c1k3djs"
-path="res://.godot/imported/Options.png-11098cd43d9e03bf2956e5f3aa163faf.ctex"
+uid="uid://cw16i1l1s8kjm"
+path="res://.godot/imported/Baphosimb.svg.png-211aec22ce34c4acafa914c9b40f8506.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bin/assets/2dassets/textures/Options.png"
-dest_files=["res://.godot/imported/Options.png-11098cd43d9e03bf2956e5f3aa163faf.ctex"]
+source_file="res://bin/assets/2dassets/textures/Baphosimb.svg.png"
+dest_files=["res://.godot/imported/Baphosimb.svg.png-211aec22ce34c4acafa914c9b40f8506.ctex"]
 
 [params]
 

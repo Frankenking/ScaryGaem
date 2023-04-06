@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw66gjedtk7mc"]
+
+[ext_resource type="PackedScene" path="res://bin/assets/3dassets/misc/tileset.glb" id="1_grm6b"]
+
+[node name="groundtileset" type="Node3D"]
+
+[node name="tileset" parent="." instance=ExtResource("1_grm6b")]

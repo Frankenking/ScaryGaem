@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://j6hyjtwpa5qw"]
+[gd_scene load_steps=10 format=3 uid="uid://j6hyjtwpa5qw"]
 
 [ext_resource type="Script" path="res://bin/scenes/Menu.gd" id="1_8je41"]
 [ext_resource type="PackedScene" uid="uid://myr1t6ga523m" path="res://bin/assets/3dassets/models/candle.tscn" id="2_87all"]
-[ext_resource type="Texture2D" uid="uid://cox2s4b2kyhcv" path="res://bin/assets/2dassets/textures/play.png" id="2_thybj"]
-[ext_resource type="Texture2D" uid="uid://cfqdt5ai30dyi" path="res://bin/assets/2dassets/textures/Options.png" id="4_gplcy"]
-[ext_resource type="Texture2D" uid="uid://deot0b44c6byt" path="res://bin/assets/2dassets/textures/Artyom Curtis.png" id="4_nj6cy"]
+[ext_resource type="Texture2D" uid="uid://deqrkwkwucd2v" path="res://bin/assets/2dassets/textures/Play.png" id="3_44qt8"]
+[ext_resource type="Texture2D" uid="uid://cchyl5c1k3djs" path="res://bin/assets/2dassets/textures/Options.png" id="4_f75w6"]
+[ext_resource type="Texture2D" uid="uid://dtreg0m1hus50" path="res://bin/assets/2dassets/textures/Back.png" id="4_xj5fb"]
 [ext_resource type="AudioStream" uid="uid://oummgjmekqt8" path="res://bin/assets/audio/Apocalypse New York.mp3" id="5_gu6cv"]
 
 [sub_resource type="Environment" id="Environment_uopoj"]
@@ -14,12 +14,9 @@ ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 reflected_light_source = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3uax"]
-albedo_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_dee6q"]
 resource_name = "fade_in"
-length = 10.0
+length = 15.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,7 +24,7 @@ tracks/0/path = NodePath(".:color")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 10),
+"times": PackedFloat32Array(0.1, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -65,10 +62,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="3D_Background/Background/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="3D_Background/Background/SubViewportContainer/SubViewport"]
@@ -87,78 +85,83 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, -10, -5)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 10, -10, -5)
 
 [node name="Candle3" parent="3D_Background/Background/Candles1" instance=ExtResource("2_87all")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -20, -10, -5)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -20, 0, -5)
 
 [node name="Candle4" parent="3D_Background/Background/Candles1" instance=ExtResource("2_87all")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20, -10, -5)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20, 0, -5)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="3D_Background/Background/Candles1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.16964, -8.01344)
-size = Vector3(50, 50, 0.1)
-material = SubResource("StandardMaterial3D_v3uax")
-
-[node name="Play" type="Button" parent="."]
-process_priority = 1
-top_level = true
+[node name="Options" type="Control" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = -55.0
-offset_right = 127.5
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Play_Texture" type="TextureRect" parent="Play"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_thybj")
-
-[node name="Options" type="Button" parent="."]
-process_priority = 1
-top_level = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 383.0
-offset_top = 249.0
-offset_right = 567.0
-offset_bottom = 313.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Options_Texture" type="TextureRect" parent="Options"]
-layout_mode = 0
-offset_left = -6.0
-offset_top = 15.0
-offset_right = 194.0
-offset_bottom = 66.0
-texture = ExtResource("4_gplcy")
-
-[node name="ArtyomCurtis" type="TextureRect" parent="."]
-process_priority = 1
-z_index = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -26.0
-offset_right = 200.0
-grow_vertical = 0
-texture = ExtResource("4_nj6cy")
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="Options"]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0171875
+anchor_top = 0.012037
+anchor_right = 0.113021
+anchor_bottom = 0.110185
+offset_top = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_xj5fb")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="MainMenu"]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.452604
+anchor_top = 0.387963
+anchor_right = 0.547396
+anchor_bottom = 0.475
+offset_top = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_44qt8")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Options_button" type="Button" parent="MainMenu"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -32.0
+offset_right = 45.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_f75w6")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MainMenu"]
+stream = ExtResource("5_gu6cv")
+pitch_scale = 0.71
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -175,10 +178,6 @@ libraries = {
 "": SubResource("AnimationLibrary_w5s0w")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_gu6cv")
-pitch_scale = 0.71
-autoplay = true
-
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MainMenu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenu/Options_button" to="." method="_on_options_button_pressed"]

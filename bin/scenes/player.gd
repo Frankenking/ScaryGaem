@@ -4,8 +4,8 @@ const GRAVITY = 9.81
 const SPEED = 5.0
 const SPRINT_MULTIPLIER = 1.4
 
-@onready var camera := $CollisionShape3D/MeshInstance3D/pivot/Camera3D
-@onready var pivot := $CollisionShape3D/MeshInstance3D/pivot
+@onready var camera := $"."/CollisionShape3D/MeshInstance3D/pivot/Camera3D
+@onready var pivot := $"."/CollisionShape3D/MeshInstance3D/pivot
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -48,3 +48,4 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+
